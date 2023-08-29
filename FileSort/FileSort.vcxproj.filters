@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Storage">
+      <UniqueIdentifier>{29eb7459-0a44-4b4e-9c9c-f34caf2de32a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sort">
+      <UniqueIdentifier>{4acf98f2-8071-4a5c-a0c7-4dacedcb2b5b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main">
+      <UniqueIdentifier>{e250ef12-a3b8-437c-90d0-4dc2f246f027}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="Storage.cpp">
+      <Filter>Storage</Filter>
+    </ClCompile>
+    <ClCompile Include="DoubleSort.cpp">
+      <Filter>Sort</Filter>
+    </ClCompile>
+    <ClCompile Include="IntSort.cpp">
+      <Filter>Sort</Filter>
+    </ClCompile>
+    <ClCompile Include="StringSort.cpp">
+      <Filter>Sort</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Storage.h">
+      <Filter>Storage</Filter>
+    </ClInclude>
+    <ClInclude Include="Sort.h">
+      <Filter>Sort</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

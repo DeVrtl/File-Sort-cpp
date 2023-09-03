@@ -11,5 +11,5 @@ namespace storage
 
     Storage* Allocate(int initialCapacity);
     void Free(Storage* pointerCount);
-    void AddString(Storage& pointerContent, const char* pointerChars);
+    void AddString(Storage& pointerContent, char* pointerChars);
 }

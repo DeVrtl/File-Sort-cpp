@@ -1,16 +1,27 @@
+#include <algorithm>
 #include "Sort.h"
 
 namespace Sort 
 {
-	void Sort(char** pointeStringArray, int length, SortMode mode)
-	{
-		if (mode == ASC)
-		{
+    bool CompareStringsAscending(const char* a, const char* b)
+    {
+        return strcmp(a, b) < 0;
+    }
 
-		}
-		else if (mode == DESC)
-		{
+    bool CompareStringsDescending(const char* a, const char* b)
+    {
+        return strcmp(a, b) > 0;
+    }
 
-		}
-	}
+    void Sort(char** pointerStringArray, int length, SortMode mode)
+    {
+        if (mode == ASC)
+        {
+            std::sort(pointerStringArray, pointerStringArray + length, CompareStringsAscending);
+        }
+        else if (mode == DESC)
+        {
+            std::sort(pointerStringArray, pointerStringArray + length, CompareStringsDescending);
+        }
+    }
 }

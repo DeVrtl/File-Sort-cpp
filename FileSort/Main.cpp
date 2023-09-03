@@ -30,7 +30,7 @@ int main(int argc, char* argv[])
 	std::string inputFileName = argv[INPUT_FILE_NAME];
 	std::string outputFileName = argv[OUTPUT_FILE_NAME];
 
-	storage::Storage content;
+	storage::Storage* content = storage::Allocate(1024);
 	SortMode sortMode;
 
 	switch (sortModeArgument)
@@ -45,6 +45,7 @@ int main(int argc, char* argv[])
 
 	default:
 		std::cout << "Wrong type" << std::endl;
+		storage::Free(content);
 		return EXIT_FAILURE;
 	}
 
@@ -64,10 +65,27 @@ int main(int argc, char* argv[])
 
 	default:
 		std::cout << "Wrong type" << std::endl;
+		storage::Free(content);
 		return EXIT_FAILURE;
 	}
 
-	storage::Free(&content);
+	std::ofstream outputFile(outputFileName);
+	if (!outputFile)
+	{
+		std::cout << "Failed to open file" << std::endl;
+		storage::Free(content);
+		return EXIT_FAILURE;
+	}
+
+	for (int i = 0; i < content->count; ++i)
+	{
+		outputFile << content->pointerChars[i] << std::endl;
+	}
+
+	outputFile.close();
+
+
+	storage::Free(content);
 
 	return EXIT_SUCCESS;
 }

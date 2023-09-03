@@ -1,4 +1,5 @@
 #include "storage.h"
+#include <iostream>
 
 namespace storage
 {
@@ -33,8 +34,29 @@ namespace storage
         }
     }
 
-    void AddString(Storage& pointerContent, const char* pointerChars)
+    void AddString(Storage& pointerContent, char* pointerChars)
     {
-        
+        if (pointerContent.count == pointerContent.allocated)
+        {
+            int newAllocated = pointerContent.allocated * 1.5;
+            char** newPointerChars = (char**)realloc(pointerContent.pointerChars, newAllocated * sizeof(char*));
+
+            if (!newPointerChars)
+            {
+                std::cout << "Error" << std::endl;
+
+                Free(&pointerContent);
+
+                pointerContent.pointerChars = nullptr;
+
+                return;
+            }
+
+            pointerContent.pointerChars = newPointerChars;
+            pointerContent.allocated = newAllocated;
+        }
+
+        pointerContent.pointerChars[pointerContent.count] = pointerChars;
+        pointerContent.count++;
     }
 }
